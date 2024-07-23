@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieListFragment">
+
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="com.kaankilic.film.View.MovieListFragment"
+        android:label="fragment_movie_list"
+        tools:layout="@layout/fragment_movie_list" >
+        <action
+            android:id="@+id/action_movieListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_movieListFragment_to_myResultFragment"
+            app:destination="@id/myResultFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.kaankilic.film.View.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+        <argument
+            android:name="movieID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.kaankilic.film.View.CommentFragment"
+        android:label="fragment_comment"
+        tools:layout="@layout/fragment_comment" >
+        <action
+            android:id="@+id/action_commentFragment_to_myResultFragment"
+            app:destination="@id/myResultFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="bilgi"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/myResultFragment"
+        android:name="com.kaankilic.film.View.MyResultFragment"
+        android:label="fragment_my_result"
+        tools:layout="@layout/fragment_my_result" >
+        <action
+            android:id="@+id/action_myResultFragment_to_commentFragment"
+            app:destination="@id/commentFragment" />
+        <argument
+            android:name="ID"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_myResultFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
+    </fragment>
+</navigation>
